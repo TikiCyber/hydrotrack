@@ -43,16 +43,10 @@
 - 🎨 **Modern UI** - Clean, intuitive interface with smooth animations
 - 🌊 **Dynamic Visuals** - Water color changes based on progress
 - ⚡ **Instant Updates** - Real-time progress without page refresh
-- 🌐 **PWA Ready** - Installable as a Progressive Web App
 
 ## 🚀 Quick Start
 
-### Option 1: Direct Use
-1. Visit [HydroTrack Live Demo](https://yourusername.github.io/hydrotrack)
-2. Enter your profile information
-3. Start tracking your water intake!
-
-### Option 2: Local Installation
+### Use: Local Installation
 ```bash
 # Clone the repository
 git clone https://github.com/yourusername/hydrotrack.git
