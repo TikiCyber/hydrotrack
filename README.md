@@ -47,7 +47,7 @@
 ## Local Installation
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/hydrotrack.git
+git clone https://github.com/TikiCyber/hydrotrack.git
 
 # Navigate to project directory
 cd hydrotrack
