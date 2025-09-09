@@ -44,7 +44,7 @@
 
 ## 🚀 Quick Start
 
-### Use: Local Installation
+## Local Installation
 ```bash
 # Clone the repository
 git clone https://github.com/yourusername/hydrotrack.git
