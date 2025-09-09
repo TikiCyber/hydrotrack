@@ -1,4 +1,4 @@
-# 💧 HydroTrack - Smart Water Intake Reminder
+# 💧 HydroTrack - Smart Water Intake Reminder (WIP)
 
 <div align="center">
   
