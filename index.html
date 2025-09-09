@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HydroTrack - Smart water intake reminder app with personalized goals and tracking">
+    <meta name="keywords" content="water tracker, hydration, health, wellness, reminder app">
+    <meta name="author" content="Your Name">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="HydroTrack">
+    
+    <title>HydroTrack - Smart Water Intake Reminder</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>💧 HydroTrack</h1>
+        <p class="subtitle">Your Smart Hydration Companion</p>
+
+        <!-- Setup Panel -->
+        <div class="setup-panel active" id="setupPanel">
+            <div class="form-group">
+                <label for="weight">Your Weight (kg)</label>
+                <input type="number" id="weight" placeholder="70" value="70">
+            </div>
+
+            <div class="form-group">
+                <label for="activity">Activity Level</label>
+                <select id="activity">
+                    <option value="1.2">Sedentary (little or no exercise)</option>
+                    <option value="1.4">Lightly active (exercise 1-3 days/week)</option>
+                    <option value="1.6" selected>Moderately active (exercise 3-5 days/week)</option>
+                    <option value="1.8">Very active (exercise 6-7 days/week)</option>
+                    <option value="2.0">Extra active (physical job or athlete)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="climate">Climate</label>
+                <select id="climate">
+                    <option value="1.0" selected>Temperate</option>
+                    <option value="1.1">Hot and Dry</option>
+                    <option value="1.15">Hot and Humid</option>
+                    <option value="0.9">Cold</option>
+                </select>
+            </div>
+
+            <button onclick="saveProfile()">Start Tracking</button>
+        </div>
+
+        <!-- Main Panel -->
+        <div class="main-panel" id="mainPanel">
+            <div class="water-bottle">
+                <div class="water-fill" id="waterFill">
+                    <span id="percentageText">0%</span>
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-value" id="currentIntake">0 ml</div>
+                    <div class="stat-label">Current Intake</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="dailyGoal">2000 ml</div>
+                    <div class="stat-label">Daily Goal</div>
+                </div>
+            </div>
+
+            <div class="streak">
+                <div class="streak-number" id="streakDays">0</div>
+                <div>Day Streak! 🔥</div>
+            </div>
+
+            <div class="quick-add">
+                <button onclick="addWater(250)">Glass (250ml)</button>
+                <button onclick="addWater(500)">Bottle (500ml)</button>
+                <button onclick="addWater(1000)">Liter (1000ml)</button>
+            </div>
+
+            <div class="custom-amount">
+                <input type="number" id="customAmount" placeholder="Custom amount (ml)">
+                <button onclick="addCustomWater()">Add</button>
+            </div>
+
+            <div class="reminder-settings">
+                <div class="toggle-switch">
+                    <span>Enable Reminders</span>
+                    <label class="switch">
+                        <input type="checkbox" id="reminderToggle" onchange="toggleReminders()">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="reminderInterval">Reminder Interval (minutes)</label>
+                    <input type="number" id="reminderInterval" value="60" min="15" max="240">
+                </div>
+            </div>
+
+            <div class="history" id="history">
+                <h3>Today's History</h3>
+                <div id="historyList"></div>
+            </div>
+
+            <button class="reset-btn" onclick="resetDay()">Reset Today's Progress</button>
+            <button onclick="changeProfile()">Change Profile</button>
+        </div>
+    </div>
+
+    <div class="notification" id="notification"></div>
+
+    <!-- JavaScript -->
+    <script src="js/app.js"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => console.log('ServiceWorker registered'))
+                    .catch(err => console.log('ServiceWorker registration failed: ', err));
+            });
+        }
+    </script>
+</body>
+</html>
